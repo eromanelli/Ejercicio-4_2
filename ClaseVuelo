@@ -1,0 +1,43 @@
+public class Vuelo {
+
+	private int numero;
+	private String destino;
+	private int capacidad;
+	private int asientosOcupados;
+	private float costoPasaje;
+	
+	public Vuelo(int valor1, String str1, int valor2, int valor3, float valor4)
+	{
+		numero = valor1;
+		destino = str1;
+		capacidad = valor2;
+		asientosOcupados = valor3;
+		costoPasaje = valor4;
+		
+	}
+	
+	
+	public String devolverDestino()
+	{
+		return destino;
+	}
+	
+	
+	public int devolverCapacidad()
+	{
+		int capacidadReal = (this.capacidad-this.asientosOcupados);
+		return capacidadReal;
+	}
+	
+	public int devolverNumero()
+	{
+		return numero;
+	}
+	
+	public float devolverCostoPasaje()
+	{
+		return costoPasaje;
+	}
+	
+	
+}
