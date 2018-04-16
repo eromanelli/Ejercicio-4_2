@@ -1,0 +1,45 @@
+import java.util.Scanner;
+
+public class Ejecutora {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Compania e = new Compania();
+		int respuesta,numero;
+		String destino;
+		
+		Scanner entrada = new Scanner (System.in);
+		do
+		{
+		
+		System.out.print("MENU DE OPCIONES: 1=AGREGAR UN VUELO 2=INFORMAR VACANTES PARA DESTINO 3=INFORMAR RECAUDADO POR VUELO"
+				+ "0=FIN DE OPERACIONES" );
+		respuesta=entrada.nextInt();
+		
+		switch(respuesta)
+		{
+			case 1: 
+			e.agregarVuelo();
+			break;
+			
+			case 2:
+			System.out.println("Ingrese un destino: ");
+			destino = entrada.next();
+			e.informarCantidadVacantesDestino(destino);
+			break;
+			
+			case 3:
+			System.out.print("Ingrese un numero de vuelo: ");
+			numero = entrada.nextInt();
+			e.informarRecaudado(numero);
+			break;
+			
+			
+		}
+		
+			
+		}while(respuesta!=0);
+	}
+
+
+}
