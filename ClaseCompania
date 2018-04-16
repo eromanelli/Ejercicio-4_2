@@ -1,0 +1,83 @@
+import java.util.Scanner;
+import java.util.ArrayList;
+
+public class Compania {
+
+	private String razonSocial;
+	private ArrayList<Vuelo> vuelos;
+	
+	public Compania()
+	{
+		Scanner entrada = new Scanner (System.in);
+		System.out.println("Ingrese Razon Social: ");
+		razonSocial = entrada.next();
+		vuelos = new ArrayList<Vuelo>();
+		
+	}
+	
+	// Punto 1
+	
+	public void agregarVuelo()
+	{
+		
+		Scanner entrada = new Scanner (System.in);
+		System.out.println("Ingrese numero de vuelo: ");
+		int nroVuelo = entrada.nextInt();
+		System.out.println("Ingrese destino: ");
+		String destino = entrada.next();
+		System.out.println("Ingrese capacidad del vuelo: ");
+		int capacidad = entrada.nextInt();
+		System.out.println("Ingrese asientos ocupados: ");
+		int ocupados = entrada.nextInt();
+		System.out.println("Ingrese costo de pasaje: ");
+		float costo = entrada.nextFloat();
+		
+		Vuelo e = new Vuelo(nroVuelo,destino,capacidad,ocupados,costo);
+		vuelos.add(e);
+		
+	}
+	
+	
+	// Punto 2
+	
+	public void informarCantidadVacantesDestino(String destino)
+	{
+		int i,sumador=0;
+		for(i=0;i<vuelos.size();i++)
+		{
+			
+			if(vuelos.get(i).devolverDestino()==destino)
+			{
+				sumador+=vuelos.get(i).devolverCapacidad();
+			}
+			System.out.println("Cantidad de vacantes disponibles a destino: "+sumador);
+		}
+	}
+	
+	// Punto 3
+	
+	public void informarRecaudado(int valor)
+	{
+		int i=0,asientos;
+		float valorPasaje,importeTotal;
+		while((i<vuelos.size() && (vuelos.get(i).devolverNumero()!=valor)))
+		{
+			i++;
+		}
+		if(i==vuelos.size())
+		{
+			System.out.println("No se encuentra el vuelo especificado ");
+		}
+		
+		else
+			{	
+			asientos = vuelos.get(i).devolverCapacidad();
+			valorPasaje = vuelos.get(i).devolverCostoPasaje();
+			importeTotal = (asientos*valorPasaje);
+			System.out.println("El importe recaudado es de: "+importeTotal);
+			}
+		
+	}
+	
+	
+}
